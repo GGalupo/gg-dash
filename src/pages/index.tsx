@@ -33,7 +33,7 @@ export default function SignIn() {
             name="password"
             label="Password"
             id="password"
-            type="email"
+            type="password"
             focusBorderColor="pink.500"
             bgColor="gray.900"
             variant="filled"
