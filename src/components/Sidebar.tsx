@@ -12,7 +12,7 @@ const Sidebar = () => {
       <Stack spacing="12" align="flex-start">
         <Box>
           <Text fontWeight="bold" color="gray.400" fontSize="small">
-            MENU
+            CORE
           </Text>
           <Stack spacing="4" mt="8" align="stretch">
             <Link display="flex" align="center">
