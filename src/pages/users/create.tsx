@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -48,9 +49,11 @@ const CreateUser = () => {
 
           <Flex mt="8" gap="4" justify="flex-end">
             <HStack>
-              <Button colorScheme="whiteAlpha" variant="ghost">
-                Cancel
-              </Button>
+              <Link href="/users" passHref>
+                <Button as="a" colorScheme="whiteAlpha" variant="ghost">
+                  Cancel
+                </Button>
+              </Link>
               <Button leftIcon={<Icon as={RiSaveLine} />} colorScheme="pink">
                 Save
               </Button>

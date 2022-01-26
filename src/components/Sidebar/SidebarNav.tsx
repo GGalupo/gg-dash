@@ -13,16 +13,24 @@ export const SidebarNav = () => {
   return (
     <Stack spacing="12" align="flex-start">
       <NavSection title="CORE">
-        <Stack spacing="4" mt="8" align="stretch">
-          <NavLink icon={RiDashboardLine}>Dashboard</NavLink>
-          <NavLink icon={RiContactsLine}>Users</NavLink>
+        <Stack spacing="4" mt={["2", "4", "6", "8"]} align="stretch">
+          <NavLink icon={RiDashboardLine} href="/dashboard">
+            Dashboard
+          </NavLink>
+          <NavLink icon={RiContactsLine} href="/users">
+            Users
+          </NavLink>
         </Stack>
       </NavSection>
 
       <NavSection title="AUTOMATION">
-        <Stack spacing="4" mt="8" align="stretch">
-          <NavLink icon={RiInputMethodLine}>Forms</NavLink>
-          <NavLink icon={RiGitMergeLine}>Automation</NavLink>
+        <Stack spacing="4" mt={["2", "4", "6", "8"]} align="stretch">
+          <NavLink icon={RiInputMethodLine} href="/forms">
+            Forms
+          </NavLink>
+          <NavLink icon={RiGitMergeLine} href="/automation">
+            Automation
+          </NavLink>
         </Stack>
       </NavSection>
     </Stack>

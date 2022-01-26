@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -38,15 +39,17 @@ const UserList = () => {
               Users
             </Heading>
 
-            <Button
-              as="a"
-              size="sm"
-              fontSize="sm"
-              colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-            >
-              Create new
-            </Button>
+            <Link href="/users/create" passHref>
+              <Button
+                as="a"
+                size="sm"
+                fontSize="sm"
+                colorScheme="pink"
+                leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+              >
+                Create new
+              </Button>
+            </Link>
           </Flex>
 
           <Table colorScheme="whiteAlpha">
