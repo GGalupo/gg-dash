@@ -12,6 +12,7 @@ import {
   Thead,
   Tr,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 
@@ -20,6 +21,10 @@ import { Pagination } from "../../components/Pagination";
 import Sidebar from "../../components/Sidebar";
 
 const UserList = () => {
+  const isWideScreen = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   return (
     <Box>
       <Header />
@@ -47,17 +52,17 @@ const UserList = () => {
           <Table colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" width="8">
+                <Th px={["4", "4", "6"]} color="gray.300" width="8">
                   <Checkbox colorScheme="pink" />
                 </Th>
                 <Th>User</Th>
-                <Th>Sign up date</Th>
-                <Th w="8"></Th>
+                {isWideScreen && <Th>Sign up date</Th>}
+                {isWideScreen && <Th w="8"></Th>}
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -68,21 +73,23 @@ const UserList = () => {
                     </Text>
                   </Box>
                 </Td>
-                <Td>January, 25, 2022</Td>
+                {isWideScreen && <Td>January, 25, 2022</Td>}
                 <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                  >
-                    Edit
-                  </Button>
+                  {isWideScreen && (
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontSize="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                    >
+                      Edit
+                    </Button>
+                  )}
                 </Td>
               </Tr>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -93,21 +100,23 @@ const UserList = () => {
                     </Text>
                   </Box>
                 </Td>
-                <Td>January, 25, 2022</Td>
+                {isWideScreen && <Td>January, 25, 2022</Td>}
                 <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                  >
-                    Edit
-                  </Button>
+                  {isWideScreen && (
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontSize="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                    >
+                      Edit
+                    </Button>
+                  )}
                 </Td>
               </Tr>
               <Tr>
-                <Td px="6">
+                <Td px={["4", "4", "6"]}>
                   <Checkbox colorScheme="pink" />
                 </Td>
                 <Td>
@@ -118,17 +127,19 @@ const UserList = () => {
                     </Text>
                   </Box>
                 </Td>
-                <Td>January, 25, 2022</Td>
+                {isWideScreen && <Td>January, 25, 2022</Td>}
                 <Td>
-                  <Button
-                    as="a"
-                    size="sm"
-                    fontSize="sm"
-                    colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                  >
-                    Edit
-                  </Button>
+                  {isWideScreen && (
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontSize="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
+                    >
+                      Edit
+                    </Button>
+                  )}
                 </Td>
               </Tr>
             </Tbody>
