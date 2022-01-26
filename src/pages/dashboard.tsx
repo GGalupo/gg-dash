@@ -67,12 +67,12 @@ const Dashboard = () => {
         <Sidebar />
 
         <SimpleGrid flex="1" gap="4" minChildWidth="320px" align="flex-start">
-          <Box p="8" bg="gray.800" borderRadius="8">
+          <Box px={["6", "8"]} py={["4", "8"]} bg="gray.800" borderRadius="8">
             <Text>Week subscribers</Text>
             <Chart options={options} series={series} type="area" height={160} />
           </Box>
 
-          <Box p="8" bg="gray.800" borderRadius="8">
+          <Box px={["6", "8"]} py={["4", "8"]} bg="gray.800" borderRadius="8">
             <Text>Opening fee</Text>
             <Chart options={options} series={series} type="area" height={160} />
           </Box>
