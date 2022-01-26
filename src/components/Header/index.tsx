@@ -1,4 +1,6 @@
-import { Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Icon, IconButton, useBreakpointValue } from "@chakra-ui/react";
+import { RiMenuLine } from "react-icons/ri";
+import { useDrawer } from "../../contexts/DrawerContext";
 
 import { Logo } from "./Logo";
 import { NotificationNav } from "./NotificationNav";
@@ -6,6 +8,8 @@ import { Profile } from "./Profile";
 import { Search } from "./Search";
 
 export const Header = () => {
+  const { onOpen } = useDrawer();
+
   const isWideScreen = useBreakpointValue({
     base: false,
     lg: true,
@@ -22,6 +26,17 @@ export const Header = () => {
       px="6"
       align="center"
     >
+      {!isWideScreen && (
+        <IconButton
+          aria-label="Open mobile navbar"
+          fontSize={["20", "24"]}
+          onClick={onOpen}
+          variant="unstyled"
+          mr={["2", "3"]}
+          mt={["2", "3"]}
+          icon={<Icon as={RiMenuLine} />}
+        />
+      )}
       <Logo />
 
       {isWideScreen && <Search />}
