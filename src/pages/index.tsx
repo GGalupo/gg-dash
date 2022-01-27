@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
 import { Button, Flex, Stack } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Input } from "../components/Form/Input";
-import { signInFormSchema } from "../schemas";
+import { signInSchema } from "../schemas";
 
 type SignInData = {
   email: string;
@@ -11,15 +12,15 @@ type SignInData = {
 };
 
 const SignIn = () => {
+  const router = useRouter();
   const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(signInFormSchema),
+    resolver: yupResolver(signInSchema),
   });
   const { errors } = formState;
 
-  console.log(errors);
-
   const handleSignIn: SubmitHandler<SignInData> = async (_values) => {
     await new Promise((resolve) => setTimeout(resolve, 2000));
+    router.push("/dashboard");
   };
 
   return (
