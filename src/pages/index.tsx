@@ -1,8 +1,21 @@
 import { Button, Flex, Stack } from "@chakra-ui/react";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Input } from "../components/Form/Input";
 
-export default function SignIn() {
+type SignInData = {
+  email: string;
+  password: string;
+};
+
+const SignIn = () => {
+  const { register, handleSubmit, formState } = useForm();
+  const { errors } = formState;
+
+  const handleSignIn: SubmitHandler<SignInData> = async (_values) => {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+  };
+
   return (
     <Flex w="100vw" h="100vh" align="center" justify="center">
       <Flex
@@ -13,40 +26,33 @@ export default function SignIn() {
         p="8"
         borderRadius={8}
         flexDir="column"
+        onSubmit={handleSubmit(handleSignIn)}
       >
         <Stack spacing="4">
           <Input
             name="email"
-            label="E-mail"
-            id="email"
             type="email"
-            focusBorderColor="pink.500"
-            bgColor="gray.900"
-            variant="filled"
-            _hover={{
-              bgColor: "gray.900",
-            }}
-            size="lg"
+            label="E-mail"
+            {...register("email")}
           />
-
           <Input
             name="password"
-            label="Password"
-            id="password"
             type="password"
-            focusBorderColor="pink.500"
-            bgColor="gray.900"
-            variant="filled"
-            _hover={{
-              bgColor: "gray.900",
-            }}
-            size="lg"
+            label="Password"
+            {...register("password")}
           />
         </Stack>
-        <Button type="submit" mt="6" colorScheme="pink">
+        <Button
+          type="submit"
+          mt="6"
+          colorScheme="pink"
+          isLoading={formState.isSubmitting}
+        >
           Entrar
         </Button>
       </Flex>
     </Flex>
   );
-}
+};
+
+export default SignIn;
