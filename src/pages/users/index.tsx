@@ -116,7 +116,11 @@ const UserList = () => {
                 </Tbody>
               </Table>
 
-              <Pagination />
+              <Pagination
+                recordsCount={200}
+                currentPage={5}
+                onPageChange={() => {}}
+              />
             </>
           )}
         </Box>
