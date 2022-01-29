@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "next/link";
 import {
   Box,
@@ -24,7 +25,9 @@ import { Pagination } from "../../components/Pagination";
 import Sidebar from "../../components/Sidebar";
 
 const UserList = () => {
-  const { data, isLoading, isFetching, error } = useUsers();
+  const [page, setPage] = useState(1);
+
+  const { data, isLoading, isFetching, error } = useUsers(page);
 
   const isWideScreen = useBreakpointValue({
     base: false,
@@ -82,7 +85,7 @@ const UserList = () => {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data.map((user) => (
+                  {data.users.map((user) => (
                     <Tr key={user.id}>
                       <Td px={["4", "4", "6"]}>
                         <Checkbox colorScheme="pink" />
@@ -117,9 +120,9 @@ const UserList = () => {
               </Table>
 
               <Pagination
-                recordsCount={200}
-                currentPage={5}
-                onPageChange={() => {}}
+                recordsCount={data.usersCount}
+                currentPage={page}
+                setCurrentPage={setPage}
               />
             </>
           )}
