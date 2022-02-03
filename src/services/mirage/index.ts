@@ -1,9 +1,9 @@
 import {
+  ActiveModelSerializer,
   createServer,
   Factory,
   Model,
   Response,
-  RestSerializer,
 } from "miragejs";
 import faker from "faker";
 
@@ -20,7 +20,7 @@ export const makeServer = () => {
     },
 
     serializers: {
-      application: RestSerializer,
+      application: ActiveModelSerializer,
     },
 
     factories: {

@@ -37,13 +37,13 @@ const UserList = () => {
     lg: true,
   });
 
-  const prefetchUser = async (userId: number) => {
+  const prefetchUser = async (userId: string) => {
     const response = await api.get(`/users/${userId}`);
 
     return response.data;
   };
 
-  const handlePrefetchUser = async (userId: number) => {
+  const handlePrefetchUser = async (userId: string) => {
     await queryClient.prefetchQuery(
       ["user", userId],
       () => prefetchUser(userId),

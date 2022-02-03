@@ -14,11 +14,14 @@ import {
 import { RiSaveLine } from "react-icons/ri";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "react-query";
 
 import { Input } from "../../components/Form/Input";
 import { Header } from "../../components/Header";
 import Sidebar from "../../components/Sidebar";
 import { createUserSchema } from "../../schemas";
+import { api } from "../../services/api";
+import { queryClient } from "../../services/queryClient";
 
 interface CreateUserData {
   name: string;
@@ -29,13 +32,36 @@ interface CreateUserData {
 
 const CreateUser = () => {
   const router = useRouter();
+
   const { register, formState, handleSubmit } = useForm({
     resolver: yupResolver(createUserSchema),
   });
   const { errors } = formState;
 
+  const createUser = async (user: CreateUserData) => {
+    try {
+      const response = await api.post("users", {
+        user: {
+          ...user,
+          created_at: new Date(),
+        },
+      });
+
+      return response.data.user;
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const createUserMutation = useMutation(createUser, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("users");
+    },
+  });
+
   const handleCreateUser: SubmitHandler<CreateUserData> = async (data) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await createUserMutation.mutateAsync(data);
+
     router.push("/users");
   };
 
